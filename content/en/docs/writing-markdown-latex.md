@@ -18,7 +18,7 @@ linktitle = "Writing content"
 
 Content can be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet), [LaTeX math](https://en.wikibooks.org/wiki/LaTeX/Mathematics), Shortcodes. *Shortcodes* are plugins which are bundled with Academic or inherited from [Hugo](http://gohugo.io/extras/shortcodes/). Additionally, HTML may be written in Markdown documents for advanced formatting.<!--more--> This article gives an overview of the most common formatting options, including features that are exclusive to Academic.
 
-## Sub-headings
+# Sub-headings
 
     ## Heading 2
     ### Heading 3
@@ -26,7 +26,7 @@ Content can be written using [Markdown](https://github.com/adam-p/markdown-here/
     ##### Heading 5
     ###### Heading 6
 
-## Emphasis
+# Emphasis
 
     Italics with _underscores_.
 
@@ -36,17 +36,18 @@ Content can be written using [Markdown](https://github.com/adam-p/markdown-here/
 
     Strikethrough with ~~two tildes~~.
 
-## Ordered lists
+# Lists
+## Ordered
 
     1. First item
     2. Another item
 
-## Unordered lists
+## Unordered
 
     * First item
     * Another item
 
-### Todo lists
+## Todo
 
 Todo lists can be written in Academic by using the standard Markdown syntax:
 
@@ -62,7 +63,7 @@ renders as
 - [x] Write diagram example
 - [ ] Do something else
 
-## Images
+# Images
 
 Images may be added to a page by either placing them in your `static/img/` media library or in your [page's folder](https://gohugo.io/content-management/page-bundles/), and then referencing them using one of the following notations:
 
@@ -82,7 +83,7 @@ A general image:
 
     ![alternative text for search engines](/img/image.jpg)
 
-## Image gallery
+# Image gallery
 
 **To add an image gallery to a page bundle:**
 
@@ -118,7 +119,7 @@ gallery_item:
 For *docs* pages (i.e. pages using the courses and documentation layout), gallery images must be placed in the `static/` media library using the second approach (due to limitations of Hugo).
 {{% /alert %}}
 
-## Videos
+# Videos
 
 The following kinds of video may be added to a page.
 
@@ -142,7 +143,7 @@ A video within a [page's folder](https://gohugo.io/content-management/page-bundl
 
     {{</* vimeo 146022717 */>}}
 
-## Links
+# Links
 
     [I'm a link](https://www.google.com)
     [A post]({{</* ref "/post/my-page-name/index.md" */>}})
@@ -157,11 +158,11 @@ To enable linking to a file, such as a PDF, first place the file in your `static
 
 The optional `"newtab"` argument for `staticref` will cause the link to be opened in a new tab.
 
-### Tags and Categories
+## Tags and Categories
 
 Use `{{</* list_tags */>}}` to provide a list of linked tags or `{{</* list_categories */>}}` to provide a list of linked categories.
 
-## Emojis
+# Emojis
 
 See the [Emoji cheat sheet](http://www.webpagefx.com/tools/emoji-cheat-sheet/) for available emoticons. The following serves as an example, but you should remove the spaces between each emoji name and pair of semicolons:
 
@@ -169,25 +170,25 @@ See the [Emoji cheat sheet](http://www.webpagefx.com/tools/emoji-cheat-sheet/) f
     
 I :heart: Academic :smile:
 
-## Blockquote
+# Blockquote
 
     > This is a blockquote.
 
 > This is a blockquote.
 
-## Highlight quote
+# Highlight quote
 
     This is a {{</* hl */>}}highlighted quote{{</* /hl */>}}.
 
 This is a {{< hl >}}highlighted quote{{< /hl >}}.
 
-## Mention a user
+# Mention a user
 
 To mention someone, type `{{%/* mention "username" */%}}` where `username` corresponds to a user account in Academic.
 
 _Requires Academic v4.6+._
 
-## Footnotes
+# Footnotes
 
     I have more [^1] to say.
     
@@ -196,7 +197,7 @@ _Requires Academic v4.6+._
 I have more [^1] to say.
 [^1]: Footnote example.
 
-## Embed Documents
+# Embed Documents
 
 The following kinds of document may be embedded into a page.
 
@@ -204,7 +205,7 @@ To embed **Google Documents** (e.g. slide deck), click *File > Publish to web > 
 
     {{</* gdocs src="https://docs.google.com/..." */>}}
 
-## Diagrams
+# Diagrams
 
 Academic supports a Markdown extension for diagrams. You can enable this feature by toggling the `diagram` option in your `config/_default/params.toml` file or by adding `diagram: true` to your page front matter. Then insert your [Mermaid diagram syntax](https://mermaidjs.github.io) within a *mermaid* code block as seen below and that's it. _Note: Academic v4.4.0+ is required to make diagrams._
 
@@ -286,13 +287,13 @@ gantt
   another task      : 24d
 ```
 
-### Advanced diagrams
+## Advanced diagrams
 
 More advanced diagrams can be created in the open source [draw.io](draw.io) editor. The editor has support for almost any type of diagram, from simple to complex. A diagram can be easily embedded in Academic by choosing **File > Embed > SVG** in the [draw.io](draw.io) editor and pasting the generated code into your page.
 
 Alternatively, a diagram can be exported as an [image](#images) from any drawing software, or a [document/slide](#embed-documents) containing a diagram can be embedded.
 
-## Code highlighting
+# Code highlighting
 
 Pass the *language* of the code, such as `python`, as a parameter after three backticks:
 
@@ -309,7 +310,7 @@ input_string_var = input("Enter some data: ")
 print("You entered: {}".format(input_string_var))
 ```
 
-### Highlighting options
+## Highlighting options
 
 The Academic theme uses [highlight.js](https://highlightjs.org) for source code highlighting, and highlighting is enabled by default for all pages. However, several configuration options are supported that allow finer-grained control over highlight.js.
 
@@ -322,7 +323,7 @@ option                | type    | description                     | config.toml 
 `highlight_style`     | string  | choose a highlighting style     | yes         | no
 
 
-#### Option `highlight`
+### Option `highlight`
 
 The `highlight` option allows enabling or disabling the inclusion of highlight.js, either globally or for a particular page. If the option is unset, it has the same effect as if you had specified `highlight = true`. That is, the highlight.js javascript and css files will be included in every page. If you'd like to only include highlight.js files on pages that actually require source code highlighting, you can set `highlight = false` in `params.toml`, and then override it by setting `highlight: true` in the preamble of any pages that require source code highlighting. Conversely, you could enable highlighting globally, and disable it locally for pages that do not require it. Here is a table that shows whether highlighting will be enabled for a page, based on the values of `highlight` set in `params.toml` and/or the page's preamble.
 
@@ -333,7 +334,7 @@ unset or true | false          | no
 false         | unset or false | no
 false         | true           | yes
 
-#### Option `highlight_languages`
+### Option `highlight_languages`
 
 The `highlight_languages` option allows you to specify additional languages that are supported by highlight.js, but are not considered "common" and therefore are not supported by default. For example, if you want source code highlighting for Go and clojure in all pages, set `highlight_languages = ["go", "clojure"]` in `params.toml`. If, on the other hand, you want to enable a language only for a specific page, you can set `highlight_languages` in that page's preamble.
 
@@ -343,7 +344,7 @@ If the `highlight_languages` option is set, then the corresponding javascript fi
 
 The `highlight_languages` option provides an easy and convenient way to include support for additional languages to be severed from a CDN. If serving unmodified files from cdnjs doesn't meet your needs, you can include javascript files for additional language support via one of the methods described in the [customization guide]({{< relref "customization.md#add-scripts-js" >}}).
 
-#### Option `highlight_style`
+### Option `highlight_style`
 
 The `highlight_style` option allows you to select an alternate css style for highlighted code. For example, if you wanted to use the solarized-dark style, you could set `highlight_style = "solarized-dark"` in `params.toml`.
 
@@ -363,21 +364,21 @@ If you don't want to change the default style that ships with Academic but you d
 
 The `highlight_style` option is only recognized when set in `params.toml`. Setting `highlight_style` in your page's preamble has no effect.
 
-## Jupyter Notebook
+# Jupyter Notebook
 
 [**View the guide to blogging with Jupyter Notebooks**]({{< relref "jupyter.md" >}}).
 
-## Twitter tweet
+# Twitter tweet
 
 To include a single tweet, pass the tweet’s ID from the tweet's URL as parameter to the shortcode:
 
     {{</* tweet 666616452582129664 */>}}
 
-## GitHub gist
+# GitHub gist
 
     {{</* gist USERNAME GIST-ID  */>}}
 
-## $\rm \LaTeX$ math
+# $\rm \LaTeX$ math
 
 Academic supports a Markdown extension for $\LaTeX$ math. You can enable this feature by toggling the `math` option in your `config/_default/params.toml` file and adding `markup: mmark` to your page front matter.
 
@@ -421,7 +422,7 @@ As Hugo and Academic attempt to parse YAML, Markdown, and LaTeX content in the a
 Hence, `abstract: "${O(d_{\max})}$"` becomes `abstract: "${O(d\\_{\\max})}$"`.
 {{% /alert %}}
 
-## Table
+# Table
 
 Code:
 
@@ -440,7 +441,7 @@ Result:
 | `hugo serve -w`   | View your website.             |
 
 
-## Alerts
+# Alerts
 
 Academic supports a Markdown extension for asides, also referred to as *alerts*.
 
@@ -480,7 +481,7 @@ This will display the following *warning* block:
 Here's some important information...
 {{% /alert %}}
 
-## Table of Contents
+# Table of Contents
 
 A table of contents may be particularly useful for long posts or tutorial/documentation type content. Use the `{{%/* toc */%}}` shortcode anywhere you wish within your Markdown content to automatically generate a table of contents.
 
